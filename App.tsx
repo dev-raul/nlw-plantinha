@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import React from 'react';
 import { StatusBar, useColorScheme } from 'react-native';
 import { useFonts, Jost_400Regular, Jost_600SemiBold } from '@expo-google-fonts/jost';
@@ -5,8 +6,7 @@ import themes from './src/themes'
 import AppLoading from 'expo-app-loading';
 import { ThemeProvider } from 'styled-components';
 
-import Welcome from './src/pages/Welcome';
-
+import Routes from './src/routes'
 
 export default function App() {
 
@@ -21,10 +21,12 @@ export default function App() {
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <StatusBar barStyle={deviceTheme === 'dark' ? 'light-content' : 'dark-content'} backgroundColor={theme.colors.background} />
-      <Welcome />
-    </ThemeProvider>
+    <>
+      <ThemeProvider theme={theme}>
+        <StatusBar barStyle={deviceTheme === 'dark' ? 'light-content' : 'dark-content'} backgroundColor={theme.colors.background} />
+        <Routes />
+      </ThemeProvider>
+    </>
   );
 }
 
