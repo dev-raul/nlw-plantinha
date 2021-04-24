@@ -7,6 +7,8 @@ import AppLoading from 'expo-app-loading';
 import { ThemeProvider } from 'styled-components';
 
 import Routes from './src/routes'
+import { Provider } from 'react-redux';
+import store from './src/store'
 
 export default function App() {
 
@@ -14,6 +16,7 @@ export default function App() {
     Jost_400Regular, Jost_600SemiBold
   });
   let deviceTheme = useColorScheme();
+  deviceTheme = 'dark'
   const theme = deviceTheme === 'dark' ? themes.dark : themes.light
 
   if (!fontsLoaded) {
@@ -21,12 +24,12 @@ export default function App() {
   }
 
   return (
-    <>
+    <Provider store={store}>
       <ThemeProvider theme={theme}>
         <StatusBar barStyle={deviceTheme === 'dark' ? 'light-content' : 'dark-content'} backgroundColor={theme.colors.background} />
         <Routes />
       </ThemeProvider>
-    </>
+    </Provider>
   );
 }
 

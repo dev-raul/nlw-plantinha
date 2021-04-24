@@ -6,6 +6,7 @@ import { useTheme } from 'styled-components';
 import Welcome from '../pages/Welcome';
 import UserIndentification from '../pages/UserIndentification';
 import Confirmation from '../pages/Confirmation';
+import PlantSelect from '../pages/PlantSelect';
 
 const Stack = createStackNavigator()
 
@@ -24,6 +25,7 @@ const StackRoutes: React.FC = () => {
       <Stack.Screen name='Welcome' component={Welcome} />
       <Stack.Screen name='UserIndentification' component={UserIndentification} />
       <Stack.Screen name='Confirmation' component={Confirmation} />
+      <Stack.Screen name='PlantSelect' component={PlantSelect} />
     </Stack.Navigator>
   )
 

@@ -24,18 +24,18 @@ const UserIndentification: React.FC = () => {
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       >
-        <TouchableWithoutFeedback onPress={() => { }} >
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
           <Content>
             <Form>
               <HeaderForm >
                 <Emoji> {!!name ? '😄️' : '😃️'} </Emoji>
                 <Title>Como podemos {'\n'} chamar você?</Title>
               </HeaderForm>
-
               <Input
                 placeholder='Digite um nome'
                 onBlur={handleInputBlur}
                 onFocus={handleInputFocus}
+                // placeholderTextColor={colors.heading}
                 isFocused={isFocused}
                 isValue={!!name}
                 onChangeText={setName}
