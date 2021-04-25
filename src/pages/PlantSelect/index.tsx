@@ -12,8 +12,10 @@ import { Creators as PLantActions } from '../../store/ducks/plants'
 import { useTheme } from 'styled-components';
 import { Container, HeaderContent, Title, SubTitle, ListTags, PlantView, ListPlants } from './styles';
 import Load from '../../components/Load';
+import { useNavigation } from '@react-navigation/core';
 
 const PlantSelect: React.FC = () => {
+  const navigation = useNavigation()
   const { colors } = useTheme()
   const dispatch = useDispatch()
   const store = useSelector((store: Store) => store)
@@ -64,7 +66,10 @@ const PlantSelect: React.FC = () => {
         <ListPlants
           data={filteredPlants}
           renderItem={({ item, index }) => (
-            <PlantCardPrimary data={{ name: item.name, photo: item.photo }} />
+            <PlantCardPrimary
+              data={{ name: item.name, photo: item.photo }}
+              onPress={() => navigation.navigate('PlantSave', { plant: item })}
+            />
           )}
           keyExtractor={(item) => String(item.id)}
           showsVerticalScrollIndicator={false}

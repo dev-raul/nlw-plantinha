@@ -1,11 +1,13 @@
 import { useNavigation } from '@react-navigation/core';
 import React, { useCallback, useState } from 'react';
-import { Keyboard, Platform, TouchableWithoutFeedback } from 'react-native';
+import { Alert, Keyboard, Platform, TouchableWithoutFeedback } from 'react-native';
+import { useDispatch } from 'react-redux';
 import Button from '../../components/Button';
-
+import { Creators as UserActions } from '../../store/ducks/user'
 import { Container, KeyboardAvoidingView, Content, Form, HeaderForm, FooterForm, Title, Emoji, Input, } from './styles';
 
 const UserIndentification: React.FC = () => {
+  const dispatch = useDispatch()
   const navigation = useNavigation()
   const [name, setName] = useState<string>()
   const [isFocused, setIsFocused] = useState(false)
@@ -18,6 +20,20 @@ const UserIndentification: React.FC = () => {
     setIsFocused(true)
   }, [])
 
+  const handleConfirmar = useCallback(() => {
+    if (!name) {
+      Alert.alert('Como podemos chamar você  ')
+    } else {
+      navigation.navigate('Confirmation', {
+        title: 'Prontinho',
+        subtitle: 'Agora vamos começar a cuidar das suas plantinhas com muito cuidado',
+        buttontitle: 'Começar',
+        icon: 'smile',
+        nextScreend: 'PlantSelect'
+      })
+      dispatch(UserActions.setName(name))
+    }
+  }, [name])
 
   return (
     <Container>
@@ -43,7 +59,7 @@ const UserIndentification: React.FC = () => {
               <FooterForm>
                 <Button
                   disabled={!name}
-                  onPress={() => navigation.navigate('Confirmation')}
+                  onPress={handleConfirmar}
                   text='Confirmar' />
               </FooterForm>
             </Form>

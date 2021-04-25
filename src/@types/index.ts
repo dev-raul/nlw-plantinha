@@ -10,10 +10,16 @@ export interface Frequency {
 
 export interface PlantsTypes {
   id: number;
+  uuid: string;
   name: string;
   about: string;
   water_tips: string;
   photo: string;
   environments: string[];
   frequency: Frequency;
+}
+export interface MyPlantTypes extends PlantsTypes {
+  dateTimeNotification: Date;
+  notificationId: string;
+  uuid: string;
 }

@@ -14,7 +14,7 @@ export const Welcome = ({ }: WelcomeProps) => {
   return (
     <Container>
       <Content>
-        <Title>Gerencie {'\n'} suas plantas{'\n'} de forma fácil</Title>
+        <Title>Gerencie{'\n'}suas plantas{'\n'}de forma fácil</Title>
         <WelcomeImage resizeMode='contain' source={require('../../assets/watering.png')} />
         <SubTitle>
           Não esqueça mais que regar suas plantas.
